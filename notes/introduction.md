@@ -1,19 +1,19 @@
-# Git and Git-Hub
-At some point in your research you will likely have a massive hard drive crash, or realize you introduced a bug in your code and want to revert it back to its working state (perhaps from several weeks before).  Or you may end up working on a bit of code with other people.  In any of these cases version control saves the day.  This document with give you an introduction to `Git` and [`Git-Hub`](https://github.com/) as a version control solution.
+# Git and GitHub
+At some point in your research you will likely have a massive hard drive crash, or realize you introduced a bug in your code and want to revert it back to its working state (perhaps from several weeks before).  Or you may end up working on a bit of code with other people.  In any of these cases version control saves the day.  This document with give you an introduction to `Git` and [`GitHub`](https://github.com/) as a version control solution.
 
 ## Before you start
 + Use linux for easiest setup and use locally as this will already have `git` installed by default
-+ Create a `Git-Hub` account: https://github.com/
-+ Set up ssh key with `Git-Hub` account: [Generate a new ssh key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), [Adding an existing ssh key to GitHub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) (Instructions are for linux or Mac based systems, you can do this on Windows but it might be a bit different than the instructions in the link)
-+ Set up Two-Factor Authentication for `Git-Hub`: https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/about-two-factor-authentication (optional)
++ Create a `GitHub` account: https://github.com/
++ Set up ssh key with `GitHub` account: [Generate a new ssh key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), [Adding an existing ssh key to GitHub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) (Instructions are for linux or Mac based systems, you can do this on Windows but it might be a bit different than the instructions in the link)
++ Set up Two-Factor Authentication for `GitHub`: https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/about-two-factor-authentication (optional)
 
 ## Useful documentation
 + The Git Book: https://git-scm.com/book/en/v2
 
-## Making a repo on Git-Hub
-When you click on the "New repository" button on Git-Hub you will see the following:
+## Making a repo on GitHub
+When you click on the "New repository" button on GitHub you will see the following:
 
-![Git-Hub new repo](git-hub_new_repo.png)
+![GitHub new repo](git-hub_new_repo.png)
 
 Here you can enter in some information about your repo:
 
@@ -25,9 +25,9 @@ Here you can enter in some information about your repo:
 + Add a license: **Do this!**  You should always add a license to you code, if you are unsure what license to use click the [About licenses](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository) button and read up on the different types.  I would recommend either the `MIT` license for your work.
 
 ### Clone a local copy
-Now that you have a new repo online it is time to get a local copy on your computer.  Open a terminal and `cd` to the directory you want your repo to live.  On Git-Hub click the `<> Code` button, if you set up an ssh key click the "SSH" tab's link, if you did not, make sure you use the "HTTPS" tab's link.  Here is an example of an ssh tab:
+Now that you have a new repo online it is time to get a local copy on your computer.  Open a terminal and `cd` to the directory you want your repo to live.  On GitHub click the `<> Code` button, if you set up an ssh key click the "SSH" tab's link, if you did not, make sure you use the "HTTPS" tab's link.  Here is an example of an ssh tab:
 
-![Git-Hub clone via ssh](git-hub_clone_repo.png)
+![GitHub clone via ssh](git-hub_clone_repo.png)
 
 Copy the link provided and go back to your terminal and type the command:
 ```bash
@@ -36,25 +36,26 @@ git clone <link you copied>
 
 Note: on the University network you might need to enter some `git clone` or `git push` commands twice before they work.
 
-## A note on authentication with Git-Hub
+## A note on authentication with GitHub
 
-[See Git-Hub docs for more detailed information](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github#authenticating-with-the-command-line)
+[See GitHub docs for more detailed information](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github#authenticating-with-the-command-line)
 
-There are two ways to authenticate with Git-Hub over the command line HTTPS and SSH.  SSH uses a physical file on you computer (encrypted with a passphrase) to log you into your Git-Hub account over the command line.  HTTPS will require you to set up a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) to act as you "password" when using the command line.  As setting up a personal access token take about the same amount of work as setting up an SSH key, it is recommended you just set up an SSH key instead.
+There are two ways to authenticate with GitHub over the command line HTTPS and SSH.  SSH uses a physical file on you computer (encrypted with a passphrase) to log you into your GitHub account over the command line.  HTTPS will require you to set up a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) to act as you "password" when using the command line.  As setting up a personal access token take about the same amount of work as setting up an SSH key, it is recommended you just set up an SSH key instead.
 
-Note: Git-Hub has created its own command line interface [GitHub CLI](https://cli.github.com/) that can log you in using your regular Git-Hub username and password and save the credentials rather than using the base `git` commands.
+### Note
+ GitHub has created its own command line interface [GitHub CLI](https://cli.github.com/) that can log you in using your regular GitHub username and password and save the credentials for future `git` commands.
 
 ## Making a local repo
-You can also make an existing folder into a git repo.  If you plan to keep back ups of this code on Git-Hub (like you should), start by making a blank repo on Git-Hub (see above) and just give it a name.  Once you do that you will see the following:
+You can also make an existing folder into a git repo.  If you plan to keep back ups of this code on GitHub (like you should), start by making a blank repo on GitHub (see above) and just give it a name.  Once you do that you will see the following:
 
-![Git-Hub blank repo](git-hub_blank_repo.png)
+![GitHub blank repo](git-hub_blank_repo.png)
 
 This gives you the step-by-step code for initializing your repo and setting the `remote` URL correctly.  Again, if you have `ssh` set up make sure you have the "SSH" button pressed, and if you don't make sure the "HTTPS" button is pressed.
 
-Note: the `git push` command at the end will require Git-Hub authentication, see the section above for further details.
+Note: the `git push` command at the end will require GitHub authentication, see the section above for further details.
 
-### Git without Git-Hub
-You can also just use git without pushing your code up to Git-Hub.  To initialize git in a directory:
+### Git without GitHub
+You can also just use git without pushing your code up to GitHub.  To initialize git in a directory:
 ```bash
 cd <dirctory>
 git init
@@ -92,7 +93,7 @@ git <command> --help
 ```
 
 # Git basics
-Now that you have your repo set up it is time to learn how to use version control.  The basic workflow for `git` is: add/make changes to a file, stage files for a commit, commit the files to the repo, push commits to remote server (e.g. Git-Hub).
+Now that you have your repo set up it is time to learn how to use version control.  The basic workflow for `git` is: add/make changes to a file, stage files for a commit, commit the files to the repo, push commits to remote server (e.g. GitHub).
 
 ## checking the status of your repo
 At any time you check the status of your repo (i.e. what files have changed, and what files are staged for commit) with:
@@ -135,13 +136,13 @@ git commit -m "<your commit message here>"
 ```
 **Note** Once a commit has been made that version of the file will _always_ be in your repo.  You will always be able to return to this version of the code (this is the point of version control).  Because of this **_never_** commit sensitive information (e.g. passwords, private data, etc...) to a public repository.
 
-## pushing changes to Git-Hub
+## pushing changes to GitHub
 If you have your remote repository set up (see above), you can push your commits with:
 ```bash
 git push
 ```
 
-## pulling changes from Git-Hub
+## pulling changes from GitHub
 If you are working on several computers, or you are working with other people, you can pull changes down from the remote repository with:
 ```bash
 git pull
