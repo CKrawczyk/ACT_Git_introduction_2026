@@ -1,5 +1,5 @@
 # Git and GitHub
-At some point in your research you will likely have a massive hard drive crash, or realize you introduced a bug in your code and want to revert it back to its working state (perhaps from several weeks before).  Or you may end up working on a bit of code with other people.  In any of these cases version control saves the day.  This document with give you an introduction to `Git` and [`GitHub`](https://github.com/) as a version control solution.
+At some point in your research you will likely have a massive hard drive crash, or realize you introduced a bug in your code and want to revert it back to its working state (perhaps from several weeks before).  Or you may end up working on a bit of code with other people.  In any of these cases version control saves the day.  This document with give you an introduction to `git` and [`GitHub`](https://github.com/) as a version control solution.
 
 ## Before you start
 + Use linux for easiest setup and use locally as this will already have `git` installed by default
@@ -9,6 +9,18 @@ At some point in your research you will likely have a massive hard drive crash, 
 
 ## Useful documentation
 + The Git Book: https://git-scm.com/book/en/v2
+
+## Note on terminology
+
+Throughout these notes I will be making references to both `git` and `GitHub` and the difference can be a bit confusing at first.
+
+- `git`: this is the version control software package.  On its own this can handel local (e.g. on a single computer) version control through a command line interface (CLI).  The CLI offers ways to link a local folder (called a repository) to a central location (either on a local network or the internet) so multiple people can access it.
+- `GitHub`: this is a website that hosts `git` repositories on the internet.  This adds additional features to `git` to allow groups of developers to more easily work together on the same code.
+
+These notes will be going over the basics of using `git` in a repository that uses `GitHub` for hosting it on the internet.  These two 
+
+### Note:
+There are other version control software available (e.g. Mercurial or SVN) and other places that could host the remote repository (e.g. GitLab or Bitbucket).
 
 ## Making a repo on GitHub
 When you click on the "New repository" button on GitHub you will see the following:
