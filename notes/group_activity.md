@@ -7,7 +7,7 @@ While git is great for helping you keep a backup of your code online, this is on
 I want everyone to add a short "hello world" program into the `code` folder of this repository (preferably in Python, but the language does not matter too much).  During this exercise I want everyone to also practice *reviewing* another classmate's submitted code.
 
 ### Note
-I will need everyone to come up and have their GitHub account added to the shared repository.  Once added, everyone can clone the repository to their local computer.
+I will need everyone to come up and have their GitHub account added to the shared repository.  Once added, everyone can clone the repository to their local computer.  See the section on authentication in the [introduction notes](./introduction.md) to be able to `push` your changes from you local computer onto the shared repo.
 
 ## Good coding practices
 Whether you are working alone or working in a team, one of the most valuable things you should keep in mind is **context transfer**.  It is not enough to just track the changes made to the code, but to also track **why** those changes were made.  Many of the best practices covered within this lecture will be various flavors of recoding this kind of context in a way that is clear to other developers, or even to yourself when you look back at old code.
