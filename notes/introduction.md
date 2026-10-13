@@ -4,7 +4,6 @@ At some point in your research you will likely have a massive hard drive crash, 
 ## Before you start
 - On the Uni computers use AppsAnywhere to install "Git" and "GitHub Desktop"
 - Create a `GitHub` account: https://github.com/
-- Set up ssh key with `GitHub` account: [Generate a new ssh key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), [Adding an existing ssh key to GitHub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) (Instructions are for linux or Mac based systems, you can do this on Windows but it might be a bit different than the instructions in the link)
 - Set up Two-Factor Authentication for `GitHub`: https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/about-two-factor-authentication (optional)
 
 ## Useful documentation
@@ -20,19 +19,21 @@ Throughout these notes I will be making references to both `git` and `GitHub` an
 These notes will be going over the basics of using `git` in a repository that uses `GitHub` for hosting it on the internet.
 
 ### Note:
-There are other version control software available (e.g. Mercurial or SVN) and other places that could host the remote repository (e.g. GitLab or Bitbucket).
+There are other version control software available (e.g. Mercurial or SVN) and other places that could host the remote repository (e.g. GitLab or Bitbucket).  `git` and `GitHub` are the most widely used at the moment so we will be covering them but the same concepts can be applied to each of them.
 
 ## Authentication with GitHub
 
 [See GitHub docs for more detailed information](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github#authenticating-with-the-command-line)
 
-There are multiple ways to authenticate with GitHub and the "best" way can depend on various factors:
-- When working on the Uni computers (and Windows in general) using GitHub Desktop is the easiest and will authenticate with the browser
-- When working on SciServer (or any other system) you will need to use a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens and clone repos with `HTTPS`
-    - This Personal Access Token will act as the password when prompted for one
-- When working on a personal Mac or Linux computer you can set up an SSH key and clone repos with `SSH`
+When you are working with you files locally and would like to sync you changes with GitHub you will need to authenticate with GitHub in some way.  There are multiple ways to do this and the "best" way can depend on various factors:
+- When working on the Uni computers (and Windows in general) using GitHub Desktop is the easiest and will authenticate with the browser.  This will use your regular GitHub user name and password.
+- When working with `git` on the command line (e.g. SciServer, or a linux terminal) you will need to create a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) and clone repos with `HTTPS` (more on this below)
+    - This personal access token will act as the password when you are prompted for one
+- When working on a personal Mac or Linux computer you can set up an SSH key and clone repos with `SSH` ([Generate a new ssh key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), [Adding an existing ssh key to GitHub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account))
     - This creates a local file on your computer (encrypted with a passphrase) along side a public key you enter into your GitHub account
-
+    - You will need to enter your passphrase when prompted 
+- GitHub has created its own command line interface [GitHub CLI](https://cli.github.com/) that can log you in using your regular GitHub username and password and save the credentials for future `git` commands.
+    - Unfortunately this is not available on the Uni computers or SciServer, but is a good option for personal computers
 
 ## Making a repo on GitHub
 When you click on the "New repository" button on GitHub you will see the following:
@@ -58,19 +59,19 @@ Copy the link provided and go back to your terminal and type the command:
 git clone <link you copied>
 ```
 
-Note: on the University network you might need to enter some `git clone` or `git push` commands twice before they work.
-
 ### Note
- GitHub has created its own command line interface [GitHub CLI](https://cli.github.com/) that can log you in using your regular GitHub username and password and save the credentials for future `git` commands.
+- If using SSH on the personal computers connected to University wifi you might need to enter some `git clone` or `git push` commands twice before they work.
+- If you are using SciServer make sure to clone your repository to persistent storage so it does not disappear when your session ends.
 
 ## Making a local repo
-You can also make an existing folder into a git repo.  If you plan to keep back ups of this code on GitHub (like you should), start by making a blank repo on GitHub (see above) and just give it a name.  Once you do that you will see the following:
+You can also make an existing folder into a git repo.  If you plan to keep backups of this folder on GitHub (like you should), start by making a blank repo on GitHub (see above) and just give it a name.  Once you do that you will see the following:
 
 ![GitHub blank repo](git-hub_blank_repo.png)
 
 This gives you the step-by-step code for initializing your repo and setting the `remote` URL correctly.  Again, if you have `ssh` set up make sure you have the "SSH" button pressed, and if you don't make sure the "HTTPS" button is pressed.
 
-Note: the `git push` command at the end will require GitHub authentication, see the section above for further details.
+### Note
+The `git push` command at the end will require GitHub authentication, see the section above for further details.
 
 ### Git without GitHub
 You can also just use git without pushing your code up to GitHub.  To initialize git in a directory:
@@ -80,7 +81,7 @@ git init
 ```
 
 # Git setup
-Before we start using git there are some basic configuration:
+Before we start using git there are some basic configurations if you are on the command line:
 ```bash
 git config --global user.name "<your name>"
 git config --global user.email "<your email>"
@@ -92,7 +93,7 @@ Check that your configuration look correct:
 git config --list
 ```
 
-## Note: 
+### Note: 
 If you want to use `nano` as the default editor you can do that with:
 ```bash
 git config --global core.editor "nano"
@@ -102,6 +103,8 @@ If you want to use `vscode` as the default editor you can do that with:
 ```bash
 git config --global core.editor "code -n --wait"
 ```
+
+If you are using SciServer or a text editor that has git integration (like VSCode) you can use the side panel to write your commit messages.
 
 ## getting help
 If you ever need help with a git command:
@@ -152,7 +155,8 @@ This will open a text editor for you to type a commit message into.  This should
 ```bash
 git commit -m "<your commit message here>"
 ```
-**Note** Once a commit has been made that version of the file will _always_ be in your repo.  You will always be able to return to this version of the code (this is the point of version control).  Because of this **_never_** commit sensitive information (e.g. passwords, private data, etc...) to a public repository.
+### Note
+Once a commit has been made that version of the file will _always_ be in your repo.  You will always be able to return to this version of the code (this is the point of version control).  Because of this, **_never_** commit sensitive information (e.g. passwords, private data, etc...) to a remote repository.
 
 ## pushing changes to GitHub
 If you have your remote repository set up (see above), you can push your commits with:
@@ -197,7 +201,8 @@ git checkout <branch name>
 git checkout -b <new branch name>
 ```
 
-**Note** Any uncommitted changes are carried over when you make a new branch.  So if you started editing your `main` branch by mistake you can just make a new branch and not loose any of the changes you made or mess up your `main` branch.
+### Note
+Any uncommitted changes are carried over when you make a new branch.  So if you started editing your `main` branch by mistake you can just make a new branch and not loose any of the changes you made or mess up your `main` branch.
 
 ## merging a branch
 ```bash
@@ -206,4 +211,5 @@ git merge <branch name>
 ```
 If there are any conflicts during the merge resolve them as stated above.
 
-**Note** In this example we are merging the branch into `main`, but `main` is just a branch like any other (there is nothing special about `main`).  You can merger any two branches.
+### Note
+In this example we are merging the branch into `main`, but `main` is just a branch like any other (there is nothing special about `main`).  You can merger any two branches.
