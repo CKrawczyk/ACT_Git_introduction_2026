@@ -3,6 +3,9 @@ At some point in your research you will likely have a massive hard drive crash, 
 
 ## Before you start
 + Use linux for easiest setup and use locally as this will already have `git` installed by default
+    + When working on the Uni computers using GitHub Desktop is the easiest way to authenticate (available via AppsAnywhere)
+    + When working on SciServer you will need to use a Personal Access Token (see below)
+    + When working on a personal Mac or Linux computer you can set up an SSH key for authentication (see below)
 + Create a `GitHub` account: https://github.com/
 + Set up ssh key with `GitHub` account: [Generate a new ssh key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), [Adding an existing ssh key to GitHub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) (Instructions are for linux or Mac based systems, you can do this on Windows but it might be a bit different than the instructions in the link)
 + Set up Two-Factor Authentication for `GitHub`: https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/about-two-factor-authentication (optional)
