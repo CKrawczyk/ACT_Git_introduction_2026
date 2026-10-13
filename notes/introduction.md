@@ -2,28 +2,37 @@
 At some point in your research you will likely have a massive hard drive crash, or realize you introduced a bug in your code and want to revert it back to its working state (perhaps from several weeks before).  Or you may end up working on a bit of code with other people.  In any of these cases version control saves the day.  This document with give you an introduction to `git` and [`GitHub`](https://github.com/) as a version control solution.
 
 ## Before you start
-+ Use linux for easiest setup and use locally as this will already have `git` installed by default
-    + When working on the Uni computers using GitHub Desktop is the easiest way to authenticate (available via AppsAnywhere)
-    + When working on SciServer you will need to use a Personal Access Token (see below)
-    + When working on a personal Mac or Linux computer you can set up an SSH key for authentication (see below)
-+ Create a `GitHub` account: https://github.com/
-+ Set up ssh key with `GitHub` account: [Generate a new ssh key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), [Adding an existing ssh key to GitHub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) (Instructions are for linux or Mac based systems, you can do this on Windows but it might be a bit different than the instructions in the link)
-+ Set up Two-Factor Authentication for `GitHub`: https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/about-two-factor-authentication (optional)
+- On the Uni computers use AppsAnywhere to install "Git" and "GitHub Desktop"
+- Create a `GitHub` account: https://github.com/
+- Set up ssh key with `GitHub` account: [Generate a new ssh key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), [Adding an existing ssh key to GitHub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) (Instructions are for linux or Mac based systems, you can do this on Windows but it might be a bit different than the instructions in the link)
+- Set up Two-Factor Authentication for `GitHub`: https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/about-two-factor-authentication (optional)
 
 ## Useful documentation
-+ The Git Book: https://git-scm.com/book/en/v2
+- The Git Book: https://git-scm.com/book/en/v2
 
-## Note on terminology
+## Terminology
 
 Throughout these notes I will be making references to both `git` and `GitHub` and the difference can be a bit confusing at first.
 
 - `git`: this is the version control software package.  On its own this can handel local (e.g. on a single computer) version control through a command line interface (CLI).  The CLI offers ways to link a local folder (called a repository) to a central location (either on a local network or the internet) so multiple people can access it.
 - `GitHub`: this is a website that hosts `git` repositories on the internet.  This adds additional features to `git` to allow groups of developers to more easily work together on the same code.
 
-These notes will be going over the basics of using `git` in a repository that uses `GitHub` for hosting it on the internet.  These two 
+These notes will be going over the basics of using `git` in a repository that uses `GitHub` for hosting it on the internet.
 
 ### Note:
 There are other version control software available (e.g. Mercurial or SVN) and other places that could host the remote repository (e.g. GitLab or Bitbucket).
+
+## Authentication with GitHub
+
+[See GitHub docs for more detailed information](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github#authenticating-with-the-command-line)
+
+There are multiple ways to authenticate with GitHub and the "best" way can depend on various factors:
+- When working on the Uni computers (and Windows in general) using GitHub Desktop is the easiest and will authenticate with the browser
+- When working on SciServer (or any other system) you will need to use a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens and clone repos with `HTTPS`
+    - This Personal Access Token will act as the password when prompted for one
+- When working on a personal Mac or Linux computer you can set up an SSH key and clone repos with `SSH`
+    - This creates a local file on your computer (encrypted with a passphrase) along side a public key you enter into your GitHub account
+
 
 ## Making a repo on GitHub
 When you click on the "New repository" button on GitHub you will see the following:
@@ -32,12 +41,12 @@ When you click on the "New repository" button on GitHub you will see the followi
 
 Here you can enter in some information about your repo:
 
-+ Repository name: the name of you repo and this will also be in the url for the repo
-+ Description: Some test to start off your README file
-+ Choose visibility: public repos have access to most GitHub features for free, as a student private ones can also get access to these features for free too (see https://education.github.com/pack)
-+ Add README: If on this will place a README.md file in your new repo.  The README is a [markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) file that is displayed on the repo's home page.
-+ Add .gitignore: A `.gitignore` file tells git what files to ignore in a repo (e.g. `.pyc` files), there are useful templates for several languages you can start with.  If you are coding in python I would suggest picking it from the dropdown list.
-+ Add a license: **Do this!**  You should always add a license to you code, if you are unsure what license to use click the [About licenses](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository) button and read up on the different types.  I would recommend either the `MIT` license for your work.
+- Repository name: the name of you repo and this will also be in the url for the repo
+- Description: Some test to start off your README file
+- Choose visibility: public repos have access to most GitHub features for free, as a student private ones can also get access to these features for free too (see https://education.github.com/pack)
+- Add README: If on this will place a README.md file in your new repo.  The README is a [markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) file that is displayed on the repo's home page.
+- Add .gitignore: A `.gitignore` file tells git what files to ignore in a repo (e.g. `.pyc` files), there are useful templates for several languages you can start with.  If you are coding in python I would suggest picking it from the dropdown list.
+- Add a license: **Do this!**  You should always add a license to you code, if you are unsure what license to use click the [About licenses](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository) button and read up on the different types.  I would recommend either the `MIT` license for your work.
 
 ### Clone a local copy
 Now that you have a new repo online it is time to get a local copy on your computer.  Open a terminal and `cd` to the directory you want your repo to live.  On GitHub click the `<> Code` button, if you set up an ssh key click the "SSH" tab's link, if you did not, make sure you use the "HTTPS" tab's link.  Here is an example of an ssh tab:
@@ -50,12 +59,6 @@ git clone <link you copied>
 ```
 
 Note: on the University network you might need to enter some `git clone` or `git push` commands twice before they work.
-
-## A note on authentication with GitHub
-
-[See GitHub docs for more detailed information](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github#authenticating-with-the-command-line)
-
-There are two ways to authenticate with GitHub over the command line HTTPS and SSH.  SSH uses a physical file on you computer (encrypted with a passphrase) to log you into your GitHub account over the command line.  HTTPS will require you to set up a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) to act as you "password" when using the command line.  As setting up a personal access token take about the same amount of work as setting up an SSH key, it is recommended you just set up an SSH key instead.
 
 ### Note
  GitHub has created its own command line interface [GitHub CLI](https://cli.github.com/) that can log you in using your regular GitHub username and password and save the credentials for future `git` commands.
