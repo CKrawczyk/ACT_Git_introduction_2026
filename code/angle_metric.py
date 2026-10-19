@@ -18,12 +18,12 @@ def angle_distance(a, b):
         The absolute value of the interior angle between a and b
         in degrees
     '''
-    return abs(b - a)
+    # return abs(b - a)
     #
     # return abs(b - a) % 180
     #
     # d = abs(b - a)
     # return min(360 - d, d)
     #
-    # d = abs((b % 360) - (a % 360))
-    # return min(360 - d, d)
+    d = abs((b % 360) - (a % 360))
+    return min(360 - d, d)
