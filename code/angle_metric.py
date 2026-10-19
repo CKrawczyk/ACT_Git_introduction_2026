@@ -22,8 +22,8 @@ def angle_distance(a, b):
     #
     # return abs(b - a) % 180
     #
-    # d = abs(b - a)
-    # return min(360 - d, d)
-    #
-    d = abs((b % 360) - (a % 360))
+    d = abs(b - a)
     return min(360 - d, d)
+    #
+    # d = abs((b % 360) - (a % 360))
+    # return min(360 - d, d)
